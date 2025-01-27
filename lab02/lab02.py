@@ -20,7 +20,10 @@ import itertools
 
 def best_hand(hand):
     "From a 7-card hand, return the best 5 card hand."
-    # Your code here
+    # A new veriable "hands" which is inital for the combination of the best 5 cards
+    hands = itertools.combinations(hand,5)  
+    #return the highest rank
+    return max (hands, key=hand_rank) 
     pass
     
 # ------------------
