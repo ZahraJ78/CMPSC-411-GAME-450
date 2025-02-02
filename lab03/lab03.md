@@ -1,2 +1,6 @@
 # Prompt Engineering Process
+At first, I noticed that the AI wasn’t responding every time I sent a message. After some debugging, I found another issue with the exit condition. The exit message wasn’t being handled correctly, so I added a separate if statement to handle the /exit command properly and ensure the attempts.txt file was generated at the end.
 
+Then, I realized the main issue was that I was starting with the user’s input message, not the AI's first response. This happened because response = chat(model=model, messages=messages, stream=False, options=options) was the first line in the while loop, and if messages[-1]['content'] == '/exit': break was the last line. This caused the AI to not respond correctly at the start and the break is not working also. 
+
+To fix this, I flipped the order of the input and the agent’s response. I made the program start with the AI’s message and then followed by the user’s input, which resolved the issue and allowed the conversation to flow correctly.
