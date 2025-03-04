@@ -32,8 +32,11 @@ class OllamaEmbeddingFunction:
         embeddings = []
         for text in input:
             response = ollama.embeddings(model=self.model_name, prompt=text)
-            embeddings.append(response["embedding"])
-        pass
+            if response and "embedding" in response:
+                embeddings.append(response["embedding"])
+            else:
+                embeddings.append([])  
+        return embeddings
 
 
 def load_documents(data_dir: str) -> Dict[str, str]:
