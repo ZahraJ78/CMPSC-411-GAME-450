@@ -6,8 +6,21 @@ from types import MethodType
 # TODO Write your reward functions here
 def myreward(state):
     # Custom reward function
+    if state == 15:
+        return 1
+    return 0
+def myreward2(state):
+    # Custom reward function
+    if state == 15:
+        return 1
+    elif state in[1,2,3,4,5,6,7,8,9,10,11,12,13,14]:
+        return -1
     pass
-
+def myreward3(state):
+    # Custom reward function
+    if state == 15:
+        return 1
+    pass
 # Create environment
 
 print("Creating environment...")
